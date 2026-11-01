@@ -1,0 +1,8 @@
+[project]
+name = "water-quality-monitor"
+version = "0.1.0"
+description = "Municipal Water Quality & Potability Telemetry Monitor (UN SDG 6 & 9)"
+requires-python = ">=3.9"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

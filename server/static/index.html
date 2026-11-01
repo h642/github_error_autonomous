@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Software Repair Dashboard | UN SDGs 9 & 16</title>
+    <meta name="description" content="Autonomous software fault localization, multi-hypothesis patch synthesis, and multi-layer verification gate dashboard for public-interest software.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Top Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="brand-title">Autonomous Software Repair Platform</h1>
+                    <div class="brand-subtitle">Resilient Public-Interest Infrastructure & Automated PR Governance</div>
+                </div>
+            </div>
+            <div class="sdg-badge">
+                <span>🛡️ UN SDG 9 & 16 Compliant</span>
+            </div>
+        </header>
+
+        <!-- Target Repository & Control Bar -->
+        <section class="control-panel">
+            <div class="control-grid">
+                <div class="input-group">
+                    <label class="input-label" for="input-repo-path">Target Codebase Path or GitHub URL</label>
+                    <input type="text" id="input-repo-path" class="text-input" placeholder="e.g. benchmark/repo or owner/repository" value="benchmark/repo">
+                </div>
+                <div class="input-group">
+                    <label class="input-label" for="select-provider">AI Reasoning Engine</label>
+                    <select id="select-provider" class="select-input">
+                        <option value="gemini" selected>Google Gemini</option>
+                        <option value="openai">OpenAI</option>
+                        <option value="anthropic">Anthropic</option>
+                        <option value="mock">Deterministic Benchmark</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="input-label" for="select-model">Model Name</label>
+                    <select id="select-model" class="select-input">
+                        <option value="gemini-2.5-pro" selected>gemini-2.5-pro (Deep Reasoning 👑)</option>
+                        <option value="gemini-3.1-pro-preview">gemini-3.1-pro-preview</option>
+                        <option value="gemini-3.6-flash">gemini-3.6-flash</option>
+                        <option value="gemini-3.5-flash">gemini-3.5-flash</option>
+                        <option value="gemini-3.8-flash">gemini-3.8-flash</option>
+                        <option value="gpt-4o">gpt-4o</option>
+                        <option value="claude-3-5-sonnet-20241022">claude-3-5-sonnet</option>
+                    </select>
+                </div>
+                <button id="btn-start-repair" class="btn-primary">
+                    <span>⚡ Launch Autonomous Repair</span>
+                </button>
+                <div class="input-group" style="grid-column: 1 / -1; margin-top: 8px;">
+                    <label class="input-label" for="input-target-issue">🎯 Target GitHub Issue URL or Bug Description (Optional)</label>
+                    <input type="text" id="input-target-issue" class="text-input" placeholder="e.g. https://github.com/owner/repo/issues/42 or describe specific behavior to fix...">
+                </div>
+                <div class="verification-toggles" style="grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 6px; padding: 10px 14px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 8px;">
+                    <span style="font-size: 0.82rem; font-weight: 600; color: var(--accent-cyan);">⚡ Level 4 Gates:</span>
+                    <label style="font-size: 0.8rem; display: flex; align-items: center; gap: 6px; cursor: pointer; color: var(--text-main);">
+                        <input type="checkbox" id="chk-regression" checked disabled> Gate 1 (Regression Tests)
+                    </label>
+                    <label style="font-size: 0.8rem; display: flex; align-items: center; gap: 6px; cursor: pointer; color: var(--text-main);">
+                        <input type="checkbox" id="chk-property" checked> Gate 2 (Hypothesis Fuzzing)
+                    </label>
+                    <label style="font-size: 0.8rem; display: flex; align-items: center; gap: 6px; cursor: pointer; color: var(--text-main);">
+                        <input type="checkbox" id="chk-mutation" checked> Gate 3 (AST Mutation)
+                    </label>
+                    <label style="font-size: 0.8rem; display: flex; align-items: center; gap: 6px; cursor: pointer; color: #38bdf8; margin-left: auto;">
+                        <input type="checkbox" id="chk-fast-mode"> 🚀 Turbo Mode (1-2s Lightning Demo)
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pipeline Stage Stepper -->
+        <nav class="stepper" aria-label="Pipeline Stages">
+            <div class="step-card" id="step-1">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Sandboxing & Ingestion</div>
+                </div>
+                <div class="step-desc">Ephemeral environment isolation & baseline trace</div>
+            </div>
+
+            <div class="step-card" id="step-2">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Ochiai Fault Localization</div>
+                </div>
+                <div class="step-desc">Statement coverage & statistical SBFL scoring</div>
+            </div>
+
+            <div class="step-card" id="step-3">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Multi-Hypothesis Synthesis</div>
+                </div>
+                <div class="step-desc">3-5 root causes & minimal unified git diff</div>
+            </div>
+
+            <div class="step-card" id="step-4">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Multi-Layer Verification</div>
+                </div>
+                <div class="step-desc">Regressions, Hypothesis fuzzing, Mutation test</div>
+            </div>
+
+            <div class="step-card" id="step-5">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <div class="step-title">PR Review & Approval</div>
+                </div>
+                <div class="step-desc">Human-in-the-loop review before GitHub push</div>
+            </div>
+        </nav>
+
+        <!-- Dashboard Two-Column Grid -->
+        <main class="dashboard-grid">
+            <!-- Left Column: Live Terminal & SBFL Heatmaps -->
+            <section class="dashboard-col-left">
+                <!-- Activity Terminal Console -->
+                <article class="card">
+                    <div class="card-title">
+                        <span>📡 Live Execution Console</span>
+                        <span style="font-size:0.75rem; color:#10b981;">● Connected (SSE Stream)</span>
+                    </div>
+                    <div id="terminal-logs" class="terminal" role="log" aria-live="polite">
+                        <div class="log-entry info">System ready. Enter target repository and click 'Launch Autonomous Repair'.</div>
+                    </div>
+                </article>
+
+                <!-- SBFL Suspiciousness Heatmap -->
+                <article class="card">
+                    <div class="card-title">
+                        <span>🎯 Spectrum-Based Fault Localization (Ochiai Top Lines)</span>
+                    </div>
+                    <table class="heatmap-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Source Location</th>
+                                <th>Ochiai Score</th>
+                                <th>Test Execution Count</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sbfl-table-body">
+                            <tr>
+                                <td colspan="4" style="color:var(--text-dim); text-align:center;">Awaiting test trace localization...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            </section>
+
+            <!-- Right Column: Hypotheses, Verification Gates, Unified Diff -->
+            <section class="dashboard-col-right">
+                <!-- Multi-Hypothesis Explorer -->
+                <article class="card">
+                    <div class="card-title">
+                        <span>🧠 Competing Root-Cause Hypotheses</span>
+                    </div>
+                    <div id="hypotheses-container">
+                        <div style="color:var(--text-dim); font-size:0.85rem;">Hypotheses will be generated autonomously once faults are localized.</div>
+                    </div>
+                </article>
+
+                <!-- Multi-Layer Verification Gate Matrix -->
+                <article class="card">
+                    <div class="card-title">
+                        <span>🛡️ Multi-Layer Verification Matrix (Anti-Overfitting)</span>
+                    </div>
+                    <div class="gate-grid">
+                        <div class="gate-card" id="gate-1-card">
+                            <div class="gate-status pending" id="gate-1-status">Pending</div>
+                            <div class="gate-value" id="gate-1-val">-</div>
+                            <div class="gate-label">Gate 1: Unit Regression</div>
+                        </div>
+
+                        <div class="gate-card" id="gate-2-card">
+                            <div class="gate-status pending" id="gate-2-status">Pending</div>
+                            <div class="gate-value" id="gate-2-val">-</div>
+                            <div class="gate-label">Gate 2: Hypothesis Fuzz</div>
+                        </div>
+
+                        <div class="gate-card" id="gate-3-card">
+                            <div class="gate-status pending" id="gate-3-status">Pending</div>
+                            <div class="gate-value" id="gate-3-val">-</div>
+                            <div class="gate-label">Gate 3: Mutation Score</div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Unified Git Diff Viewer -->
+                <article class="card">
+                    <div class="card-title">
+                        <span>📄 Minimal Candidate Unified Patch (`git diff`)</span>
+                    </div>
+                    <div id="diff-viewer" class="diff-container">
+                        <div style="color:var(--text-dim);">No patch synthesized yet.</div>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <!-- Human-In-The-Loop Approval Banner -->
+        <aside id="approval-banner" class="approval-banner" aria-live="assertive">
+            <div class="approval-header">
+                <div class="approval-title">
+                    <span>✨ Autonomous Repair Verified & Ready for Deployment</span>
+                </div>
+            </div>
+            
+            <div id="approval-summary" style="font-size:0.92rem; line-height:1.6; color:#e2e8f0;">
+                <!-- Filled dynamically by dashboard.js -->
+            </div>
+
+            <!-- GitHub Remote Publishing Controls -->
+            <div class="pr-token-panel" style="margin-top:16px; padding:16px; background:rgba(15,23,42,0.7); border:1px solid rgba(255,255,255,0.1); border-radius:12px;">
+                <label for="input-github-token" style="display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; font-weight:600; color:#cbd5e1; margin-bottom:8px;">
+                    <span>🔑 GitHub Personal Access Token (PAT)</span>
+                    <a href="https://github.com/settings/tokens/new?scopes=repo&description=Autonomous+Repair+Pipeline" target="_blank" rel="noopener noreferrer" style="color:var(--accent-cyan); font-weight:normal; text-decoration:underline; font-size:0.8rem;">Generate Classic Token with 'repo' scope ↗</a>
+                </label>
+                <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+                    <input type="password" id="input-github-token" class="text-input" placeholder="Paste GitHub Token (ghp_... or github_pat_...) or add GITHUB_TOKEN in .env" style="flex:1; min-width:260px;">
+                    <button id="btn-approve-pr" class="btn-approve">
+                        <span>Accept & Submit PR to GitHub 🚀</span>
+                    </button>
+                </div>
+                <div id="token-status-hint" style="margin-top:8px; font-size:0.8rem; color:#94a3b8;">
+                    💡 Token is saved in your browser storage so you only have to enter it once. Required by GitHub to push branches and open Pull Requests.
+                </div>
+            </div>
+
+            <!-- PR Error Box -->
+            <div id="pr-error-box" class="pr-error-box" style="display:none; background:rgba(239,68,68,0.15); border:1px solid #ef4444; border-radius:10px; padding:16px; margin-top:16px;">
+                <div style="font-weight:700; color:#f87171; margin-bottom:4px; display:flex; align-items:center; gap:8px;">
+                    <span>⚠️ Pull Request Submission Failed</span>
+                </div>
+                <div id="pr-error-msg" style="font-size:0.85rem; color:#fca5a5; line-height:1.5;"></div>
+            </div>
+            
+            <!-- PR Success Box -->
+            <div id="pr-success-box" class="pr-success-box">
+                <div style="font-weight:700; color:#34d399; margin-bottom:6px; font-size:1.05rem;">🎉 Pull Request Successfully Created on GitHub!</div>
+                <div id="pr-success-msg" style="font-size:0.88rem; color:#94a3b8; margin-bottom:12px;"></div>
+                <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                    <a id="pr-success-link" class="pr-link" href="#" target="_blank" rel="noopener noreferrer" style="font-size:0.95rem; font-weight:700;"></a>
+                    <a id="pr-success-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-approve" style="padding:6px 16px; font-size:0.82rem; text-decoration:none; display:inline-flex;">Open on GitHub ↗</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
